@@ -3,15 +3,13 @@ import gallery2 from "@/assets/gallery-2.jpg";
 import gallery3 from "@/assets/gallery-3.jpg";
 import gallery4 from "@/assets/gallery-4.jpg";
 import gallery5 from "@/assets/gallery-5.jpg";
-import gallery6 from "@/assets/gallery-6.jpg";
 
 const projects = [
-  { src: gallery1, title: "Period Living Room", category: "Interior Painting" },
-  { src: gallery2, title: "Shaker Kitchen", category: "Kitchen Cabinets" },
-  { src: gallery3, title: "Feature Wall", category: "Wallpapering" },
-  { src: gallery4, title: "Dorset Cottage", category: "Exterior Painting" },
-  { src: gallery5, title: "Oak Staircase", category: "Wood Finishing" },
-  { src: gallery6, title: "Office Refurbishment", category: "Commercial" },
+  { src: gallery1, title: "Barn Conversion", category: "Carpentry & Flooring" },
+  { src: gallery2, title: "Office Refurbishment", category: "Commercial" },
+  { src: gallery3, title: "Media Wall", category: "Bespoke Carpentry" },
+  { src: gallery4, title: "Garden Room", category: "Interior Painting" },
+  { src: gallery5, title: "Period Bedroom", category: "Interior Painting" },
 ];
 
 const Gallery = () => {
