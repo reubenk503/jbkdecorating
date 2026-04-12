@@ -8,8 +8,8 @@ const services = [
   },
   {
     icon: Home,
-    title: "Exterior Painting",
-    description: "Weather-resistant coatings that protect and beautify your property against the Dorset elements.",
+    title: "Carpentry",
+    description: "Skilled carpentry services including repairs, fitting and bespoke woodwork to complement your decorating project.",
   },
   {
     icon: Wallpaper,
