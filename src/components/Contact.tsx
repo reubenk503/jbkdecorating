@@ -1,6 +1,39 @@
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
+import { useState } from "react";
+import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/hooks/use-toast";
 
 const Contact = () => {
+  const { toast } = useToast();
+  const [loading, setLoading] = useState(false);
+  const [form, setForm] = useState({ name: "", phone: "", email: "", message: "" });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!form.name || !form.email) {
+      toast({ title: "Please fill in your name and email", variant: "destructive" });
+      return;
+    }
+    setLoading(true);
+    const { error } = await supabase.from("enquiries").insert({
+      name: form.name,
+      phone: form.phone || null,
+      email: form.email,
+      message: form.message || null,
+    });
+    setLoading(false);
+    if (error) {
+      toast({ title: "Something went wrong", description: "Please try again or call us directly.", variant: "destructive" });
+    } else {
+      toast({ title: "Enquiry sent!", description: "We'll be in touch shortly." });
+      setForm({ name: "", phone: "", email: "", message: "" });
+    }
+  };
+
   return (
     <section id="contact" className="py-24">
       <div className="container">
@@ -61,7 +94,7 @@ const Contact = () => {
             <h3 className="text-2xl font-heading font-semibold text-foreground mb-6">
               Request a Free Quote
             </h3>
-            <form className="space-y-5" onSubmit={(e) => e.preventDefault()}>
+            <form className="space-y-5" onSubmit={handleSubmit}>
               <div className="grid sm:grid-cols-2 gap-5">
                 <div>
                   <label className="text-sm font-body font-medium text-foreground mb-1.5 block">
@@ -69,6 +102,9 @@ const Contact = () => {
                   </label>
                   <input
                     type="text"
+                    name="name"
+                    value={form.name}
+                    onChange={handleChange}
                     className="w-full px-4 py-3 rounded-lg border border-border bg-background font-body text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent/50"
                     placeholder="Your name"
                   />
@@ -79,6 +115,9 @@ const Contact = () => {
                   </label>
                   <input
                     type="tel"
+                    name="phone"
+                    value={form.phone}
+                    onChange={handleChange}
                     className="w-full px-4 py-3 rounded-lg border border-border bg-background font-body text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent/50"
                     placeholder="Your phone number"
                   />
@@ -90,6 +129,9 @@ const Contact = () => {
                 </label>
                 <input
                   type="email"
+                  name="email"
+                  value={form.email}
+                  onChange={handleChange}
                   className="w-full px-4 py-3 rounded-lg border border-border bg-background font-body text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent/50"
                   placeholder="Your email"
                 />
@@ -99,6 +141,9 @@ const Contact = () => {
                   Tell us about your project
                 </label>
                 <textarea
+                  name="message"
+                  value={form.message}
+                  onChange={handleChange}
                   rows={4}
                   className="w-full px-4 py-3 rounded-lg border border-border bg-background font-body text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent/50 resize-none"
                   placeholder="e.g. Interior painting of 3-bedroom house..."
@@ -106,9 +151,10 @@ const Contact = () => {
               </div>
               <button
                 type="submit"
-                className="w-full bg-accent text-accent-foreground py-4 rounded-lg font-body font-semibold text-lg hover:opacity-90 transition-opacity"
+                disabled={loading}
+                className="w-full bg-accent text-accent-foreground py-4 rounded-lg font-body font-semibold text-lg hover:opacity-90 transition-opacity disabled:opacity-50"
               >
-                Send Enquiry
+                {loading ? "Sending..." : "Send Enquiry"}
               </button>
             </form>
           </div>
