@@ -66,7 +66,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground font-body">Email us</p>
-                  <p className="font-body font-semibold text-foreground">info@jbkdecorating.co.uk</p>
+                  <p className="font-body font-semibold text-foreground">jbkdecorating@outlook.com</p>
                 </div>
               </div>
               <div className="flex items-center gap-4">
