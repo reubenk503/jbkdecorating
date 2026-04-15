@@ -74,8 +74,8 @@ const Contact = () => {
                   <MapPin className="w-5 h-5 text-accent" />
                 </div>
                 <div>
-                  <p className="text-sm text-muted-foreground font-body">Covering</p>
-                  <p className="font-body font-semibold text-foreground">All areas of Dorset</p>
+                  <p className="text-sm text-muted-foreground font-body">Based in</p>
+                  <p className="font-body font-semibold text-foreground">Gillingham, Dorset — 25-mile radius</p>
                 </div>
               </div>
               <div className="flex items-center gap-4">
