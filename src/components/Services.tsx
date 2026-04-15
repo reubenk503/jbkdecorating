@@ -2,32 +2,32 @@ import { Brush, Hammer, Layers, TreePine, Store, Gem } from "lucide-react";
 
 const services = [
   {
-    icon: Paintbrush,
+    icon: Brush,
     title: "Interior Painting",
     description: "Flawless walls, ceilings and woodwork. We prep thoroughly and use premium paints for a lasting finish.",
   },
   {
-    icon: Home,
+    icon: Hammer,
     title: "Carpentry",
     description: "Skilled carpentry services including repairs, fitting and bespoke woodwork to complement your decorating project.",
   },
   {
-    icon: Wallpaper,
+    icon: Layers,
     title: "Wallpapering",
     description: "Expert hanging of all wallpaper types, from feature walls to full room transformations.",
   },
   {
-    icon: Droplets,
+    icon: TreePine,
     title: "Wood Staining & Varnishing",
     description: "Bring out the natural beauty of timber with professional staining and protective finishes.",
   },
   {
-    icon: Building2,
+    icon: Store,
     title: "Commercial Work",
     description: "Offices, shops and commercial spaces completed efficiently with minimal disruption.",
   },
   {
-    icon: Sparkles,
+    icon: Gem,
     title: "Specialist Finishes",
     description: "From colour consultations to decorative techniques that add character to any space.",
   },
