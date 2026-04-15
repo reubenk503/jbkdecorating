@@ -15,8 +15,8 @@ const Header = () => {
   return (
     <header className="absolute top-0 left-0 right-0 z-50">
       <div className="container flex items-center justify-between py-5">
-        <a href="/" className="text-2xl font-heading font-bold text-primary-foreground">
-          JBK <span className="text-accent">Decorating</span>
+        <a href="/" className="flex items-center gap-2">
+          <img src={jbkLogo} alt="JBK Decorating Services logo" className="h-12 w-auto" />
         </a>
 
         <nav className="hidden md:flex items-center gap-8">
