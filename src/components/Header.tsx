@@ -1,4 +1,5 @@
 import { Phone, Menu, X } from "lucide-react";
+import jbkLogo from "@/assets/jbk-logo.png";
 import { useState } from "react";
 
 const Header = () => {
