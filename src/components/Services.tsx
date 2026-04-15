@@ -1,4 +1,4 @@
-import { Paintbrush, Home, Building2, Wallpaper, Droplets, Sparkles } from "lucide-react";
+import { Brush, Hammer, Layers, TreePine, Store, Gem } from "lucide-react";
 
 const services = [
   {
