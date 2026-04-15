@@ -22,10 +22,11 @@ const About = () => {
               Dorset's Trusted<br />Decorating Team
             </h2>
             <p className="text-muted-foreground font-body text-lg leading-relaxed mb-8">
-              JBK Decorating has been transforming homes and businesses across Dorset for over
-              five years. We take pride in delivering exceptional results every time — from a
-              single feature wall to a complete property makeover. Our reputation is built on
-              honest pricing, reliable service, and a finish that speaks for itself.
+              Led by Jason, JBK Decorating has been elevating interiors across the region for over
+              five years. Operating from our base in Gillingham, we proudly serve clients within a
+              25-mile radius — encompassing Dorset's most picturesque towns and villages. Every
+              project reflects our unwavering commitment to meticulous craftsmanship, transparent
+              pricing, and a flawless finish that truly speaks for itself.
             </p>
             <div className="grid sm:grid-cols-2 gap-4">
               {highlights.map((item) => (
