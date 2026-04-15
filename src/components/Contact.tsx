@@ -83,8 +83,8 @@ const Contact = () => {
                   <Clock className="w-5 h-5 text-accent" />
                 </div>
                 <div>
-                  <p className="text-sm text-muted-foreground font-body">Working hours</p>
-                  <p className="font-body font-semibold text-foreground">Mon–Fri: 8am – 6pm</p>
+                  <p className="text-sm text-muted-foreground font-body">Response time</p>
+                  <p className="font-body font-semibold text-foreground">We reply within hours</p>
                 </div>
               </div>
             </div>
