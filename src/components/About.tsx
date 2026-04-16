@@ -1,7 +1,7 @@
 import { CheckCircle2 } from "lucide-react";
 
 const highlights = [
-  "Over 5 years of experience in Dorset",
+  "Established 2012, based in Dorset",
   "Fully insured and reliable",
   "Premium paints and materials",
   "Clean, tidy and respectful of your home",
@@ -22,8 +22,8 @@ const About = () => {
               Dorset's Trusted<br />Decorating Team
             </h2>
             <p className="text-muted-foreground font-body text-lg leading-relaxed mb-8">
-              Led by Jason, JBK Decorating has been elevating interiors across the region for over
-              five years. Operating from our base in Gillingham, we proudly serve clients within a
+              Led by Jason, JBK Decorating has been elevating interiors across the region since
+              2012. Operating from our base in Gillingham, we proudly serve clients within a
               25-mile radius — encompassing Dorset's most picturesque towns and villages. Every
               project reflects our unwavering commitment to meticulous craftsmanship, transparent
               pricing, and a flawless finish that truly speaks for itself.
@@ -40,8 +40,8 @@ const About = () => {
 
           <div className="relative">
             <div className="bg-primary rounded-2xl p-12 text-primary-foreground">
-              <p className="text-6xl md:text-8xl font-heading font-bold text-accent mb-2">5+</p>
-              <p className="text-2xl font-heading font-semibold mb-4">Years of Excellence</p>
+              <p className="text-5xl md:text-7xl font-heading font-bold text-accent mb-2">EST. 2012</p>
+              <p className="text-2xl font-heading font-semibold mb-4">A Decade of Excellence</p>
               <p className="font-body text-primary-foreground/80 leading-relaxed">
                 Serving homeowners and businesses throughout Dorset with dedication and
                 craftsmanship that keeps customers coming back.
