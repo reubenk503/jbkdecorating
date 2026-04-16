@@ -19,19 +19,37 @@ const Contact = () => {
       return;
     }
     setLoading(true);
+    const id = crypto.randomUUID();
     const { error } = await supabase.from("enquiries").insert({
+      id,
       name: form.name,
       phone: form.phone || null,
       email: form.email,
       message: form.message || null,
     });
-    setLoading(false);
     if (error) {
+      setLoading(false);
       toast({ title: "Something went wrong", description: "Please try again or call us directly.", variant: "destructive" });
-    } else {
-      toast({ title: "Enquiry sent!", description: "We'll be in touch shortly." });
-      setForm({ name: "", phone: "", email: "", message: "" });
+      return;
     }
+
+    // Send notification email to JBK Decorating
+    await supabase.functions.invoke("send-transactional-email", {
+      body: {
+        templateName: "enquiry-notification",
+        idempotencyKey: `enquiry-${id}`,
+        templateData: {
+          name: form.name,
+          email: form.email,
+          phone: form.phone || undefined,
+          message: form.message || undefined,
+        },
+      },
+    });
+
+    setLoading(false);
+    toast({ title: "Enquiry sent!", description: "We'll be in touch shortly." });
+    setForm({ name: "", phone: "", email: "", message: "" });
   };
 
   return (
