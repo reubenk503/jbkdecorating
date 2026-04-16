@@ -2,24 +2,24 @@ import { Star, Quote } from "lucide-react";
 
 const reviews = [
   {
-    name: "Sarah M.",
-    location: "Bournemouth",
-    text: "JBK transformed our entire downstairs. The attention to detail was incredible — every edge was crisp, every surface smooth. Couldn't recommend them highly enough!",
+    name: "Steve Stockley",
+    date: "14 Dec 2021",
+    text: "Jas is a fantastic painter and decorator, good carpenter too. Fast, reliable, great work, turns up when he says so — friendly, awesome guy.",
   },
   {
-    name: "David & Claire T.",
-    location: "Poole",
-    text: "We've used JBK three times now and they never disappoint. Professional, tidy, and the finish is always perfect. They're our go-to decorators.",
+    name: "Leanne Groves",
+    date: "2 Nov 2021",
+    text: "Jason is a really nice guy. Very professional and outstanding at what he does. Nothing is ever too much trouble and he pays great attention to detail. Highly recommended.",
   },
   {
-    name: "James R.",
-    location: "Weymouth",
-    text: "Had the exterior of our period property painted. JBK took real care with the prep work and the result is stunning. Great value for the quality of work.",
+    name: "Holly Ridout",
+    date: "29 Jun 2020",
+    text: "Great job of painting my bathroom and utility room, thank you! Timely and professional.",
   },
   {
-    name: "Emma L.",
-    location: "Dorchester",
-    text: "From the initial quote to the final coat, everything was seamless. They even helped us choose the right colours. Absolutely brilliant service!",
+    name: "Julie Martin",
+    date: "5 Mar 2020",
+    text: "Thank you Jason for the fantastic job of living room, kitchen and hall. Very pleased with the result, and lovely and clean after. I would highly recommend him and would use him again.",
   },
 ];
 
@@ -34,6 +34,9 @@ const Reviews = () => {
           <h2 className="text-4xl md:text-5xl font-heading font-bold text-foreground">
             What Our Customers Say
           </h2>
+          <p className="text-muted-foreground font-body mt-4">
+            Genuine recommendations from clients on Facebook.
+          </p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
@@ -53,7 +56,7 @@ const Reviews = () => {
               </p>
               <div>
                 <p className="font-body font-semibold text-foreground">{review.name}</p>
-                <p className="text-muted-foreground text-sm font-body">{review.location}</p>
+                <p className="text-muted-foreground text-sm font-body">{review.date}</p>
               </div>
             </div>
           ))}
