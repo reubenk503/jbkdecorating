@@ -33,7 +33,7 @@ const Hero = () => {
           </h1>
 
           <p className="text-lg text-primary-foreground/80 font-body max-w-lg leading-relaxed">
-            Trusted by homeowners across Dorset for over 5 years. Quality craftsmanship,
+            Trusted by homeowners across Dorset since 2012. Quality craftsmanship,
             meticulous attention to detail, and a finish you'll love.
           </p>
 
