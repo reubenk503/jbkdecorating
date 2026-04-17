@@ -64,8 +64,8 @@ const Contact = () => {
               Ready to Transform<br />Your Space?
             </h2>
             <p className="text-muted-foreground font-body text-lg leading-relaxed mb-10">
-              Get in touch for a free, no-obligation quote. We cover all areas of Dorset
-              including Bournemouth, Poole, Weymouth, Dorchester and surrounding villages.
+              Get in touch for a free, no-obligation quote. We cover North Dorset,
+              South Somerset and West Wiltshire.
             </p>
 
             <div className="space-y-6">
