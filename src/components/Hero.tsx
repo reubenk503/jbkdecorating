@@ -45,7 +45,7 @@ const Hero = () => {
               Get a Free Quote
             </a>
             <a
-              href="tel:+441234567890"
+              href="tel:07774015129"
               className="inline-flex items-center justify-center gap-2 border-2 border-primary-foreground/30 text-primary-foreground px-8 py-4 rounded-lg font-body font-semibold text-lg hover:bg-primary-foreground/10 transition-colors"
             >
               <Phone className="w-5 h-5" />
