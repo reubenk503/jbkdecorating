@@ -110,7 +110,7 @@ const Contact = () => {
             </div>
           </div>
 
-          <div className="bg-card p-8 md:p-10 rounded-2xl border border-border">
+          <div id="quote-form" className="bg-card p-8 md:p-10 rounded-2xl border border-border scroll-mt-24">
             <h3 className="text-2xl font-heading font-semibold text-foreground mb-6">
               Request a Free Quote
             </h3>

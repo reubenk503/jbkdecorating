@@ -39,7 +39,7 @@ const Hero = () => {
 
           <div className="flex flex-col sm:flex-row gap-4 pt-4">
             <a
-              href="#contact"
+              href="#quote-form"
               className="inline-flex items-center justify-center gap-2 bg-accent text-accent-foreground px-8 py-4 rounded-lg font-body font-semibold text-lg hover:opacity-90 transition-opacity"
             >
               Get a Free Quote
