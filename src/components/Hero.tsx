@@ -12,7 +12,7 @@ const Hero = () => {
           width={1920}
           height={1080}
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-foreground/80 via-foreground/50 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-foreground/85 via-foreground/60 to-foreground/20" />
       </div>
 
       <div className="container relative z-10 py-20">
