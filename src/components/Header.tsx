@@ -34,7 +34,7 @@ const Header = () => {
             </a>
           ))}
           <a href="/" className="flex items-center">
-            <img src={logo} alt="JBK Decorating Services" className="h-12 md:h-14 w-auto" />
+            <img src={logo} alt="JBK Decorating Services" className="h-16 md:h-20 w-auto" />
           </a>
         </nav>
 
