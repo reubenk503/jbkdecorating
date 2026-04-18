@@ -1,5 +1,6 @@
 import { Phone, Menu, X } from "lucide-react";
 import { useState } from "react";
+import logo from "@/assets/jbk-logo.png";
 
 const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
