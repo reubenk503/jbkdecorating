@@ -33,6 +33,9 @@ const Header = () => {
               {link.label}
             </a>
           ))}
+          <a href="/" className="flex items-center">
+            <img src={logo} alt="JBK Decorating Services" className="h-12 md:h-14 w-auto" />
+          </a>
         </nav>
 
         <button
