@@ -14,7 +14,7 @@ const Header = () => {
 
   return (
     <header className="absolute top-0 left-0 right-0 z-50">
-      <div className="container flex items-center justify-between py-5">
+      <div className="container flex items-start justify-between py-5">
         <a
           href="tel:07774015129"
           className="inline-flex items-center gap-2 bg-accent text-accent-foreground px-5 py-2.5 rounded-lg font-body font-semibold hover:opacity-90 transition-opacity"
@@ -23,7 +23,7 @@ const Header = () => {
           Call Now
         </a>
 
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden md:flex items-start gap-8">
           {links.map((link) => (
             <a
               key={link.href}
@@ -33,8 +33,8 @@ const Header = () => {
               {link.label}
             </a>
           ))}
-          <a href="/" className="flex items-center">
-            <img src={logo} alt="JBK Decorating Services" className="h-16 md:h-20 w-auto" />
+          <a href="/" className="flex items-center -mt-3">
+            <img src={logo} alt="JBK Decorating Services" className="h-20 md:h-24 w-auto" />
           </a>
         </nav>
 
