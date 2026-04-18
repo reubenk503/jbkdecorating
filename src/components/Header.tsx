@@ -28,7 +28,7 @@ const Header = () => {
             <a
               key={link.href}
               href={link.href}
-              className="text-primary-foreground/80 hover:text-accent font-body font-medium transition-colors"
+              className="text-primary-foreground/80 hover:text-accent font-body font-medium transition-colors mt-3"
             >
               {link.label}
             </a>
