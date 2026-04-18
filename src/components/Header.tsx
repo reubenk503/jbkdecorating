@@ -1,5 +1,6 @@
 import { Phone, Menu, X } from "lucide-react";
 import { useState } from "react";
+import logo from "@/assets/jbk-logo.png";
 
 const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -14,8 +15,8 @@ const Header = () => {
   return (
     <header className="absolute top-0 left-0 right-0 z-50">
       <div className="container flex items-center justify-between py-5">
-        <a href="/" className="text-2xl font-heading font-bold text-primary-foreground">
-          JBK <span className="text-accent">Decorating</span>
+        <a href="/" className="flex items-center bg-primary-foreground/95 rounded-lg px-3 py-1.5">
+          <img src={logo} alt="JBK Decorating Services" className="h-12 md:h-14 w-auto" />
         </a>
 
         <nav className="hidden md:flex items-center gap-8">
