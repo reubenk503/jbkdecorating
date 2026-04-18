@@ -15,8 +15,12 @@ const Header = () => {
   return (
     <header className="absolute top-0 left-0 right-0 z-50">
       <div className="container flex items-center justify-between py-5">
-        <a href="/" className="flex items-center">
-          <img src={logo} alt="JBK Decorating Services" className="h-12 md:h-14 w-auto" />
+        <a
+          href="tel:07774015129"
+          className="inline-flex items-center gap-2 bg-accent text-accent-foreground px-5 py-2.5 rounded-lg font-body font-semibold hover:opacity-90 transition-opacity"
+        >
+          <Phone className="w-4 h-4" />
+          Call Now
         </a>
 
         <nav className="hidden md:flex items-center gap-8">
@@ -29,12 +33,8 @@ const Header = () => {
               {link.label}
             </a>
           ))}
-          <a
-            href="tel:07774015129"
-            className="inline-flex items-center gap-2 bg-accent text-accent-foreground px-5 py-2.5 rounded-lg font-body font-semibold hover:opacity-90 transition-opacity"
-          >
-            <Phone className="w-4 h-4" />
-            Call Now
+          <a href="/" className="flex items-center">
+            <img src={logo} alt="JBK Decorating Services" className="h-12 md:h-14 w-auto" />
           </a>
         </nav>
 
