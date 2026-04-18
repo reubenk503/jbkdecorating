@@ -1,6 +1,5 @@
 import { Phone, Menu, X } from "lucide-react";
 import { useState } from "react";
-import logo from "@/assets/jbk-logo.png";
 
 const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -33,9 +32,6 @@ const Header = () => {
               {link.label}
             </a>
           ))}
-          <a href="/" className="flex items-center">
-            <img src={logo} alt="JBK Decorating Services" className="h-12 md:h-14 w-auto" />
-          </a>
         </nav>
 
         <button
