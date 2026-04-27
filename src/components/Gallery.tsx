@@ -4,6 +4,8 @@ import gallery3 from "@/assets/gallery-3.jpg";
 import gallery4 from "@/assets/gallery-4.jpg";
 import gallery5 from "@/assets/gallery-5.jpg";
 import gallery6 from "@/assets/gallery-6.jpg";
+import gallery7 from "@/assets/gallery-7.jpg";
+import gallery8 from "@/assets/gallery-8.jpg";
 
 const projects = [
   { src: gallery1, title: "Barn Conversion", category: "Carpentry & Flooring" },
@@ -12,6 +14,8 @@ const projects = [
   { src: gallery4, title: "Garden Room", category: "Interior Painting" },
   { src: gallery5, title: "Period Bedroom", category: "Interior Painting" },
   { src: gallery6, title: "Period Living Room", category: "Interior Painting" },
+  { src: gallery7, title: "Staircase & Balustrade", category: "Carpentry & Painting" },
+  { src: gallery8, title: "Beamed Living Room", category: "Interior Painting" },
 ];
 
 const Gallery = () => {
