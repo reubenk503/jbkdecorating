@@ -12,6 +12,11 @@ const reviews = [
     text: "Jason's work is always to a very high standard. He's thoroughly professional and incredibly conscientious about leaving the place immaculate after he's decorated.",
   },
   {
+    name: "Kevin Hirst",
+    date: "29 Oct 2019",
+    text: "Friendly, excellent work to a high standard. Recommended.",
+  },
+  {
     name: "Jon West",
     date: "21 Sep 2019",
     text: "Top bloke, reliable and did great job, defo recommend and use again.",
