@@ -7,6 +7,21 @@ const reviews = [
     text: "Jas is a fantastic painter and decorator, good carpenter too. Fast, reliable, great work, turns up when he says so — friendly, awesome guy.",
   },
   {
+    name: "Abi Brake-Moz",
+    date: "27 Oct 2019",
+    text: "Jason's work is always to a very high standard. He's thoroughly professional and incredibly conscientious about leaving the place immaculate after he's decorated.",
+  },
+  {
+    name: "Jon West",
+    date: "21 Sep 2019",
+    text: "Top bloke, reliable and did great job, defo recommend and use again.",
+  },
+  {
+    name: "John Martin",
+    date: "23 Apr 2019",
+    text: "A straight hardworking bloke who helped me out when my bathroom refurb was goin belly up. Would use again. Thank you.",
+  },
+  {
     name: "Leanne Groves",
     date: "2 Nov 2021",
     text: "Jason is a really nice guy. Very professional and outstanding at what he does. Nothing is ever too much trouble and he pays great attention to detail. Highly recommended.",
