@@ -1,187 +1,107 @@
-import { Phone, Mail, MapPin, Clock } from "lucide-react";
-import { useState } from "react";
-import { supabase } from "@/integrations/supabase/client";
-import { useToast } from "@/hooks/use-toast";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact</title>
 
-const Contact = () => {
-  const { toast } = useToast();
-  const [loading, setLoading] = useState(false);
-  const [form, setForm] = useState({ name: "", phone: "", email: "", message: "" });
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!form.name || !form.email) {
-      toast({ title: "Please fill in your name and email", variant: "destructive" });
-      return;
-    }
-    setLoading(true);
-    const id = crypto.randomUUID();
-    const { error } = await supabase.from("enquiries").insert({
-      id,
-      name: form.name,
-      phone: form.phone || null,
-      email: form.email,
-      message: form.message || null,
-    });
-    if (error) {
-      setLoading(false);
-      toast({ title: "Something went wrong", description: "Please try again or call us directly.", variant: "destructive" });
-      return;
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #0f172a;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
     }
 
-    // Send notification email to JBK Decorating
-    await supabase.functions.invoke("send-transactional-email", {
-      body: {
-        templateName: "enquiry-notification",
-        idempotencyKey: `enquiry-${id}`,
-        templateData: {
-          name: form.name,
-          email: form.email,
-          phone: form.phone || undefined,
-          message: form.message || undefined,
-        },
-      },
+    .form-container {
+      background: #1e293b;
+      padding: 2rem;
+      border-radius: 10px;
+      width: 100%;
+      max-width: 400px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 6px;
+      border: none;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 10px;
+      width: 100%;
+      background: #3b82f6;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #2563eb;
+    }
+
+    .success, .error {
+      margin-top: 10px;
+      font-size: 14px;
+    }
+
+    .success { color: #22c55e; }
+    .error { color: #ef4444; }
+  </style>
+</head>
+
+<body>
+
+  <div class="form-container">
+    <h2>Contact Us</h2>
+
+    <form id="contact-form">
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="email" name="email" placeholder="Your Email" required />
+      <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+
+      <button type="submit">Send Message</button>
+      <div id="form-status"></div>
+    </form>
+  </div>
+
+  <script>
+    const form = document.getElementById("contact-form");
+    const status = document.getElementById("form-status");
+
+    form.addEventListener("submit", async function(e) {
+      e.preventDefault();
+
+      const data = new FormData(form);
+
+      try {
+        const response = await fetch("https://formspree.io/f/xwvaglwg", {
+          method: "POST",
+          body: data,
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
+
+        if (response.ok) {
+          status.innerHTML = "<p class='success'>✅ Message sent successfully!</p>";
+          form.reset();
+        } else {
+          status.innerHTML = "<p class='error'>❌ Something went wrong. Try again.</p>";
+        }
+      } catch (error) {
+        status.innerHTML = "<p class='error'>⚠️ Network error. Please try later.</p>";
+      }
     });
+  </script>
 
-    setLoading(false);
-    toast({ title: "Enquiry sent!", description: "We'll be in touch shortly." });
-    setForm({ name: "", phone: "", email: "", message: "" });
-  };
-
-  return (
-    <section id="contact" className="py-24">
-      <div className="container">
-        <div className="grid lg:grid-cols-2 gap-16">
-          <div>
-            <p className="text-accent font-body font-semibold tracking-wider uppercase text-sm mb-3">
-              Get In Touch
-            </p>
-            <h2 className="text-4xl md:text-5xl font-heading font-bold text-foreground mb-6">
-              Ready to Transform<br />Your Space?
-            </h2>
-            <p className="text-muted-foreground font-body text-lg leading-relaxed mb-10">
-              Get in touch for a free, no-obligation quote. We cover North Dorset,
-              South Somerset and West Wiltshire.
-            </p>
-
-            <div className="space-y-6">
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center">
-                  <Phone className="w-5 h-5 text-accent" />
-                </div>
-                <div>
-                  <p className="text-sm text-muted-foreground font-body">Call us</p>
-                  <a href="tel:07774015129" className="font-body font-semibold text-foreground hover:text-accent transition-colors">
-                    07774 015129
-                  </a>
-                </div>
-              </div>
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center">
-                  <Mail className="w-5 h-5 text-accent" />
-                </div>
-                <div>
-                  <p className="text-sm text-muted-foreground font-body">Email us</p>
-                  <p className="font-body font-semibold text-foreground">jbkdecorating@outlook.com</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center">
-                  <MapPin className="w-5 h-5 text-accent" />
-                </div>
-                <div>
-                  <p className="text-sm text-muted-foreground font-body">Based in</p>
-                  <p className="font-body font-semibold text-foreground">Gillingham, Dorset — 25-mile radius</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center">
-                  <Clock className="w-5 h-5 text-accent" />
-                </div>
-                <div>
-                  <p className="text-sm text-muted-foreground font-body">Response time</p>
-                  <p className="font-body font-semibold text-foreground">We reply within hours</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div id="quote-form" className="bg-card p-8 md:p-10 rounded-2xl border border-border scroll-mt-24">
-            <h3 className="text-2xl font-heading font-semibold text-foreground mb-6">
-              Request a Free Quote
-            </h3>
-            <form className="space-y-5" onSubmit={handleSubmit}>
-              <div className="grid sm:grid-cols-2 gap-5">
-                <div>
-                  <label className="text-sm font-body font-medium text-foreground mb-1.5 block">
-                    Name
-                  </label>
-                  <input
-                    type="text"
-                    name="name"
-                    value={form.name}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-lg border border-border bg-background font-body text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent/50"
-                    placeholder="Your name"
-                  />
-                </div>
-                <div>
-                  <label className="text-sm font-body font-medium text-foreground mb-1.5 block">
-                    Phone
-                  </label>
-                  <input
-                    type="tel"
-                    name="phone"
-                    value={form.phone}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-lg border border-border bg-background font-body text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent/50"
-                    placeholder="Your phone number"
-                  />
-                </div>
-              </div>
-              <div>
-                <label className="text-sm font-body font-medium text-foreground mb-1.5 block">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  name="email"
-                  value={form.email}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-lg border border-border bg-background font-body text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent/50"
-                  placeholder="Your email"
-                />
-              </div>
-              <div>
-                <label className="text-sm font-body font-medium text-foreground mb-1.5 block">
-                  Tell us about your project
-                </label>
-                <textarea
-                  name="message"
-                  value={form.message}
-                  onChange={handleChange}
-                  rows={4}
-                  className="w-full px-4 py-3 rounded-lg border border-border bg-background font-body text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent/50 resize-none"
-                  placeholder="e.g. Interior painting of 3-bedroom house..."
-                />
-              </div>
-              <button
-                type="submit"
-                disabled={loading}
-                className="w-full bg-accent text-accent-foreground py-4 rounded-lg font-body font-semibold text-lg hover:opacity-90 transition-opacity disabled:opacity-50"
-              >
-                {loading ? "Sending..." : "Send Enquiry"}
-              </button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-};
-
-export default Contact;
+</body>
+</html>
+                   
