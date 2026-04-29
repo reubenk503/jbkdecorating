@@ -71,26 +71,30 @@ export default function ContactForm() {
   );
 }
 
+const green = "#285343";
+
 const styles = {
   page: {
     minHeight: "100vh",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    background: "#0f172a",
+    background: "#ffffff", // white background
     padding: "20px",
   },
   card: {
-    background: "#1e293b",
+    background: "#ffffff",
     padding: "30px",
     borderRadius: "12px",
     width: "100%",
     maxWidth: "420px",
-    boxShadow: "0 10px 25px rgba(0,0,0,0.3)",
+    boxShadow: "0 10px 25px rgba(0,0,0,0.1)",
+    border: `1px solid ${green}`,
   },
   title: {
     textAlign: "center",
     marginBottom: "20px",
+    color: green,
   },
   form: {
     display: "flex",
@@ -100,17 +104,17 @@ const styles = {
   input: {
     padding: "12px",
     borderRadius: "8px",
-    border: "1px solid #334155",
-    background: "#0f172a",
-    color: "#fff",
+    border: `2px solid ${green}`,
+    background: "#ffffff",
+    color: "#000",
     outline: "none",
   },
   textarea: {
     padding: "12px",
     borderRadius: "8px",
-    border: "1px solid #334155",
-    background: "#0f172a",
-    color: "#fff",
+    border: `2px solid ${green}`,
+    background: "#ffffff",
+    color: "#000",
     resize: "none",
     outline: "none",
   },
@@ -118,7 +122,7 @@ const styles = {
     padding: "12px",
     borderRadius: "8px",
     border: "none",
-    background: "#3b82f6",
+    background: green,
     color: "#fff",
     cursor: "pointer",
     fontWeight: "bold",
@@ -126,5 +130,6 @@ const styles = {
   status: {
     marginTop: "15px",
     textAlign: "center",
+    color: green,
   },
 };
