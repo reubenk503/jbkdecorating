@@ -1,107 +1,67 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Contact</title>
+import { useState } from "react";
 
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #0f172a;
-      color: #fff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
+export default function ContactForm() {
+  const [status, setStatus] = useState("");
 
-    .form-container {
-      background: #1e293b;
-      padding: 2rem;
-      border-radius: 10px;
-      width: 100%;
-      max-width: 400px;
-    }
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatus("Sending...");
 
-    input, textarea {
-      width: 100%;
-      padding: 10px;
-      margin-top: 10px;
-      border-radius: 6px;
-      border: none;
-    }
+    const form = e.target;
+    const data = new FormData(form);
 
-    button {
-      margin-top: 15px;
-      padding: 10px;
-      width: 100%;
-      background: #3b82f6;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-    }
+    try {
+      const response = await fetch("https://formspree.io/f/xwvaglwg", {
+        method: "POST",
+        body: data,
+        headers: {
+          Accept: "application/json",
+        },
+      });
 
-    button:hover {
-      background: #2563eb;
-    }
-
-    .success, .error {
-      margin-top: 10px;
-      font-size: 14px;
-    }
-
-    .success { color: #22c55e; }
-    .error { color: #ef4444; }
-  </style>
-</head>
-
-<body>
-
-  <div class="form-container">
-    <h2>Contact Us</h2>
-
-    <form id="contact-form">
-      <input type="text" name="name" placeholder="Your Name" required />
-      <input type="email" name="email" placeholder="Your Email" required />
-      <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-
-      <button type="submit">Send Message</button>
-      <div id="form-status"></div>
-    </form>
-  </div>
-
-  <script>
-    const form = document.getElementById("contact-form");
-    const status = document.getElementById("form-status");
-
-    form.addEventListener("submit", async function(e) {
-      e.preventDefault();
-
-      const data = new FormData(form);
-
-      try {
-        const response = await fetch("https://formspree.io/f/xwvaglwg", {
-          method: "POST",
-          body: data,
-          headers: {
-            'Accept': 'application/json'
-          }
-        });
-
-        if (response.ok) {
-          status.innerHTML = "<p class='success'>✅ Message sent successfully!</p>";
-          form.reset();
-        } else {
-          status.innerHTML = "<p class='error'>❌ Something went wrong. Try again.</p>";
-        }
-      } catch (error) {
-        status.innerHTML = "<p class='error'>⚠️ Network error. Please try later.</p>";
+      if (response.ok) {
+        setStatus("✅ Message sent!");
+        form.reset();
+      } else {
+        setStatus("❌ Something went wrong.");
       }
-    });
-  </script>
+    } catch (error) {
+      setStatus("⚠️ Network error.");
+    }
+  };
 
-</body>
-</html>
-                   
+  return (
+    <div style={{ maxWidth: "400px", margin: "auto" }}>
+      <h2>Contact Us</h2>
+
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          name="name"
+          placeholder="Your Name"
+          required
+          style={{ width: "100%", marginBottom: "10px" }}
+        />
+
+        <input
+          type="email"
+          name="email"
+          placeholder="Your Email"
+          required
+          style={{ width: "100%", marginBottom: "10px" }}
+        />
+
+        <textarea
+          name="message"
+          placeholder="Your Message"
+          required
+          style={{ width: "100%", marginBottom: "10px" }}
+        />
+
+        <button type="submit">Send Message</button>
+      </form>
+
+      {status && <p>{status}</p>}
+    </div>
+  );
+}
