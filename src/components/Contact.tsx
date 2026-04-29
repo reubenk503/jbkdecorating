@@ -20,13 +20,13 @@ export default function ContactForm() {
       });
 
       if (response.ok) {
-        setStatus("✅ Message sent!");
+        setStatus(" Message sent!");
         form.reset();
       } else {
-        setStatus("❌ Something went wrong.");
+        setStatus(" Something went wrong.");
       }
     } catch (error) {
-      setStatus("⚠️ Network error.");
+      setStatus(" Network error.");
     }
   };
 
