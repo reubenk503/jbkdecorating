@@ -31,7 +31,7 @@ export default function ContactForm() {
   };
 
   return (
-    <div style={styles.page}>
+    <div id="contact" style={styles.page}>
       <div style={styles.card}>
         <h2 style={styles.title}>Contact Us</h2>
 
